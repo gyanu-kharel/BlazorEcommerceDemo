@@ -1,0 +1,31 @@
+﻿@page "/products"
+
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Category</th>
+                <th scope="col">OrignalPrice</th>
+                <th scope="col">DiscountedPrice</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in products)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.CategoryName</td>
+                    <td>@item.OriginalPrice</td>
+                    <td>@item.DiscountPrice</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+    

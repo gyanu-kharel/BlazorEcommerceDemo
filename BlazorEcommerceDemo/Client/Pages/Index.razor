@@ -1,0 +1,34 @@
+﻿@page "/"
+@using BlazorEcommerceDemo.Shared.Models.Products;
+
+<PageTitle>Index</PageTitle>
+
+<div class="row">
+    @foreach (var item in products)
+    {
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                @if (item.DiscountPrice.HasValue)
+                {
+                    <span>Price: $ <del>@item.OriginalPrice</del></span><br />
+                    <span><b>Offer Price: $</b> @item.DiscountPrice</span><br />
+                }
+                else
+                {
+                    <span>@item.OriginalPrice</span>
+                }
+                <span class="oi oi-heart" style="color:darkgrey; float:right;"></span>
+            </div>
+        </div>
+    }
+</div>
+
+@code
+{
+    private IEnumerable<GetAllProductsDto> products;
+
+    protected override async Task OnInitializedAsync()
+        => products = await ProductService.GetAllProductsAsync();
+}
