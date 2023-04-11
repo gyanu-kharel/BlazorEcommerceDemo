@@ -1,31 +1,54 @@
 ﻿@page "/products"
 
+<div class="container">
+    <div class="top-section">
+        <a href="/products/add" class="btn btn-success">Add new product</a>
 
-<div class="row">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Category</th>
-                <th scope="col">OrignalPrice</th>
-                <th scope="col">DiscountedPrice</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var item in products)
-            {
+        <div class="search">
+            <input type="text" style="height:38px;" placeholder="Enter a keyword" />
+            <button class="btn btn-outline-secondary">Search</button>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@item.CategoryName</td>
-                    <td>@item.OriginalPrice</td>
-                    <td>@item.DiscountPrice</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Orignal Price</th>
+                    <th scope="col">Discounted Price</th>
+                    <th scope="col">Action</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach(var item in products)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.CategoryName</td>
+                        <td>@item.OriginalPrice</td>
+                        <td>@item.DiscountPrice</td>
+                        <td><a href="/products/edit/@item.Id" class="btn btn-primary">Edit</a></td>
+                        <td><button class="btn btn-danger">Delete</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
+
+<style>
+    .container{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .top-section
+    {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+</style>
 
     
